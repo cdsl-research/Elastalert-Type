@@ -155,7 +155,8 @@ This rule is effective for detecting repeated login attempts or suspicious activ
 
 ## Example of Execution
 Elastalert Execution
-<img width="942" height="285" alt="image" src="https://github.com/user-attachments/assets/a23dc1fd-f885-4956-a1d8-3dca2e5352b1" />
+<img width="940" height="303" alt="image" src="https://github.com/user-attachments/assets/d04cc4ac-c66a-4bcd-becc-c34735c5c368" />
+
 Redmine Alert Example
 <img width="1498" height="713" alt="image" src="https://github.com/user-attachments/assets/2fa8a074-bfcf-42a5-8dff-b21727cabf6b" />
 
