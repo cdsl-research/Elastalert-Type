@@ -1,0 +1,22 @@
+# blacklist.yaml
+name: Blacklisted IP Authentication Failure
+type: blacklist
+index: "beats-*"
+
+filter:
+  - query:
+      query_string:
+        query: 'source.ip: ("10.10.10.10" OR "10.10.10.11") AND (event.action: "authentication_failure" OR message: "failed password")'
+alert:
+  - post2
+http_post2_url: "http://monitoring-master-ml:32400/alert"
+http_post2_headers:
+  Content-Type: "application/json"
+jinja_root_name: _data
+http_post2_payload:
+  alerts:
+    - labels:
+        alertname: "Blacklisted IP Authentication Failure"
+      annotations:
+        description: |-
+          message: {{ _data.get('message','') }}
