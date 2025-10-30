@@ -1,0 +1,25 @@
+# spike.yaml
+name: Syslog Warning Spike Detected
+type: spike
+index: "syslog-*"
+timeframe:
+  minutes: 30
+spike_height: 3
+spike_type: up
+filter:
+  - query:
+      query_string:
+        query: 'log.syslog.severity.name.keyword : "Warning"'
+alert:
+  - post2
+http_post2_url: "http://monitoring-master-ml:32400/alert"
+http_post2_headers:
+  Content-Type: "application/json"
+jinja_root_name: _data
+http_post2_payload:
+  alerts:
+    - labels:
+        alertname: "Syslog Warning Spike Detected"
+      annotations:
+        description: |-
+          message: {{ _data.get('message','') }}
