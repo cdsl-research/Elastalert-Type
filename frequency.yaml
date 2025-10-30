@@ -1,0 +1,24 @@
+# frequency.yaml
+name: Alertmanager High Error Log Rate
+type: frequency
+index: "beats-*"
+num_events: 10
+timeframe:
+  minutes: 10
+filter:
+  - query:
+      query_string:
+        query: 'kubernetes.namespace: alert AND message: error'
+alert:
+  - post2
+http_post2_url: "http://monitoring-master-ml:32400/alert"
+http_post2_headers:
+  Content-Type: "application/json"
+jinja_root_name: _data
+http_post2_payload:
+  alerts:
+    - labels:
+        alertname: "Alertmanager High Error Log Rate"
+      annotations:
+        description: |-
+          message: {{ _data.get('message','') }}
