@@ -6,7 +6,6 @@ It includes five YAML configuration files: `config.yaml`, `frequency.yaml`, `spi
 Each file serves as a simple example to show how ElastAlert2 can detect log anomalies such as high error rates, sudden spikes, missing logs, and unauthorized access attempts.  
 The purpose of this repository is to help users understand and implement the basic rule types of ElastAlert2 for log monitoring and alerting.
 
----
 
 ## Requirements
 
@@ -22,7 +21,6 @@ The purpose of this repository is to help users understand and implement the bas
 | Memory | 8 GB |
 | Storage | 40 GB |
 
----
 
 ## Contents
 
@@ -33,8 +31,6 @@ The purpose of this repository is to help users understand and implement the bas
 | `spike.yaml` | Detects a sudden increase in warning-level syslogs. |
 | `flatline.yaml` | Detects absence of syslog activity within a certain time period. |
 | `blacklist.yaml` | Detects authentication failures originating from blacklisted IP addresses. |
-
----
 
 ## File Descriptions
 
@@ -60,7 +56,6 @@ es_port: 30092
 
 This configuration ensures that ElastAlert runs every minute and queries the last two minutes of log data to detect events in near real-time.
 
----
 
 ### frequency.yaml
 This rule detects when too many error messages appear in a short time frame within the `alert` namespace.
@@ -84,7 +79,6 @@ filter:
 - The `filter` section defines the Elasticsearch query used to match logs with `message: error` inside the `alert` namespace.  
 This rule is useful for detecting recurring errors in a short time window.
 
----
 
 ### spike.yaml
 This rule detects a sudden spike in the number of warning logs in the `syslog-*` index.
@@ -109,8 +103,6 @@ filter:
 - The `filter` section captures logs with severity level “Warning.”  
 This rule is effective for identifying sudden bursts of warning logs, which may indicate new or growing issues in the system.
 
----
-
 ### flatline.yaml
 This rule detects when no syslog entries are received within a specified period.
 
@@ -132,8 +124,6 @@ filter:
 - The query `*` matches all logs in the index.  
 This rule is used to detect logging interruptions, such as when a syslog source stops sending data.
 
----
-
 ### blacklist.yaml
 This rule detects authentication failures originating from specific blacklisted IP addresses.
 
@@ -151,16 +141,12 @@ filter:
 - The query filters logs that come from blacklisted IP addresses and include messages indicating authentication failures.  
 This rule is effective for detecting repeated login attempts or suspicious activities from known bad IPs.
 
----
-
 ## Example of Execution
 Elastalert Execution
 <img width="940" height="303" alt="image" src="https://github.com/user-attachments/assets/d04cc4ac-c66a-4bcd-becc-c34735c5c368" />
 
 Redmine Alert Example
 <img width="1498" height="713" alt="image" src="https://github.com/user-attachments/assets/2fa8a074-bfcf-42a5-8dff-b21727cabf6b" />
-
----
 
 ## Conclusion
 This repository demonstrates how to implement different ElastAlert2 rule types for basic log monitoring and alerting.  
