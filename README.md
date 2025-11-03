@@ -32,49 +32,72 @@ For detailed documentation, refer to the official ElastAlert2 repository:
 1. Install the latest version of Python.  
    Example (for Ubuntu 22.04):
 
-   ```bash
+   ```
    c0a22173@elast:~$ sudo apt update
    c0a22173@elast:~$ sudo apt install python3 python3-pip python3-venv -y
    ```
 
 2. Create and activate a virtual environment:
 
-   ```bash
-   c0a22173@elast:~$ python3 -m venv elastalert-env
-   c0a22173@elast:~$ source elastalert-env/bin/activate
-   (elastalert-env) c0a22173@elast:~$
+   ```
+   c0a22173@elast:~$ python3 -m venv elast
+   c0a22173@elast:~$ source elast/bin/activate
+   (elast) c0a22173@elast:~$
    ```
 
 3. Verify Python and pip versions:
 
-   ```bash
-   (elastalert-env) c0a22173@elast:~$ python3 --version
-   Python 3.10.12
-   (elastalert-env) c0a22173@elast:~$ pip3 --version
-   pip 24.2 from /home/c0a22173/elastalert-env/lib/python3.10/site-packages/pip (python 3.10)
+   ```
+   (elast) c0a22173@elast:~$ python3 --version
+   Python 3.14.0
+   (elast) c0a22173@elast:~$ pip3 --version
+   pip 24.2 from /home/c0a22173/elastalert-env/lib/python3.14/site-packages/pip (python 3.14)
    ```
 
 
 ### 3.2 ElastAlert Setup
 
-1. Install ElastAlert2 using pip:
+Follow these steps to install ElastAlert2 from the official GitHub repository.
 
-   ```
-   (elastalert-env) c0a22173@elast:~$ pip install elastalert2
-   ```
+```
+c0a22173@elast:~$ git clone https://github.com/jertel/elastalert2.git
+c0a22173@elast:~$ source elast/bin/activate
+(elast) c0a22173@elast:~$ pip install "setuptools>=11.3"
+Requirement already satisfied: setuptools>=11.3 in ./elast/lib/python3.12/site-packages (80.9.0)
+(elast) c0a22173@elast:~$ ls
+elast  elastalert2
+(elast) c0a22173@elast:~$ cd elastalert2
+(elast) c0a22173@elast:~/elastalert2$ ls
+CHANGELOG.md     Dockerfile  examples  README.md             SECURITY.md  tests
+chart            docs        LICENSE   requirements-dev.txt  setup.cfg
+CONTRIBUTING.md  elastalert  Makefile  requirements.txt      setup.py
+(elast) c0a22173@elast:~/elastalert2$ pip install "setuptools>=11.3"
+(elast) c0a22173@elast:~/elastalert2$ python setup.py install
+/home/c0a22173/elast/lib/python3.12/site-packages/setuptools/__init__.py:92: _DeprecatedInstaller: setuptools.installer and fetch_build_eggs are deprecated.
+!!
+        ********************************************************************************
+        Requirements should be satisfied by a PEP 517 installer.
+        If you are using pip, you can try `pip install --use-pep517`.
 
-2. Example output:
+        By 2025-Oct-31, you need to update your project and remove deprecated calls
+        or your builds will no longer be supported.
+        ********************************************************************************
+.
+.
+.
+Installing elastalert script to /home/c0a22173/elast/bin
+Installing elastalert-create-index script to /home/c0a22173/elast/bin
+Installing elastalert-test-rule script to /home/c0a22173/elast/bin
+(elast) c0a22173@elast:~$
+```
 
-   ```
-   Collecting elastalert2
-     Downloading elastalert2-2.11.1-py3-none-any.whl (402 kB)
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 402.1/402.1 kB 1.5 MB/s eta 0:00:00
-   Collecting elasticsearch>=8.0.0
-     Downloading elasticsearch-8.13.4-py3-none-any.whl (385 kB)
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 385.0/385.0 kB 1.3 MB/s eta 0:00:00
-   Installing collected packages: elastalert2, elasticsearch
-   Successfully installed elastalert2-2.11.1 elasticsearch-8.13.4
-   ```
+**Explanation:**  
+- The `git clone` command downloads the official ElastAlert2 source code.  
+- A Python virtual environment is activated to isolate dependencies.  
+- `setuptools` ensures that installation requirements are met.  
+- `python setup.py install` installs ElastAlert2 locally inside the virtual environment.  
+- Once completed, the executables `elastalert`, `elastalert-create-index`, and `elastalert-test-rule` are available inside the virtual environment’s `bin` directory.
+
    
 ### 3.3 Configuration Setup
 
