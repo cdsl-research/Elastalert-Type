@@ -30,29 +30,28 @@ For detailed documentation, refer to the official ElastAlert2 repository:
 ### 3.1 Python Setup
 
 1. Install the latest version of Python.  
-   Example (for Ubuntu 22.04):
 
-   ```
-   c0a22173@elast:~$ sudo apt update
-   c0a22173@elast:~$ sudo apt install python3 python3-pip python3-venv -y
-   ```
+```
+c0a22173@elast:~$ sudo apt update
+c0a22173@elast:~$ sudo apt install python3 python3-pip python3-venv -y
+```
 
 2. Create and activate a virtual environment:
 
-   ```
-   c0a22173@elast:~$ python3 -m venv elast
-   c0a22173@elast:~$ source elast/bin/activate
-   (elast) c0a22173@elast:~$
-   ```
+```
+c0a22173@elast:~$ python3 -m venv elast
+c0a22173@elast:~$ source elast/bin/activate
+(elast) c0a22173@elast:~$
+```
 
 3. Verify Python and pip versions:
 
-   ```
-   (elast) c0a22173@elast:~$ python3 --version
-   Python 3.14.0
-   (elast) c0a22173@elast:~$ pip3 --version
-   pip 24.2 from /home/c0a22173/elastalert-env/lib/python3.14/site-packages/pip (python 3.14)
-   ```
+```
+(elast) c0a22173@elast:~$ python3 --version
+Python 3.14.0
+(elast) c0a22173@elast:~$ pip3 --version
+pip 24.2 from /home/c0a22173/elastalert-env/lib/python3.14/site-packages/pip (python 3.14)
+```
 
 
 ### 3.2 ElastAlert Setup
@@ -85,6 +84,9 @@ CONTRIBUTING.md  elastalert  Makefile  requirements.txt      setup.py
 .
 .
 .
+.
+.
+
 Installing elastalert script to /home/c0a22173/elast/bin
 Installing elastalert-create-index script to /home/c0a22173/elast/bin
 Installing elastalert-test-rule script to /home/c0a22173/elast/bin
