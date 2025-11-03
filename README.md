@@ -1,13 +1,12 @@
 # Elastalert-Type
 
-## Brief Description
+## 1.0 Description
 This repository provides a set of example configurations for ElastAlert2, demonstrating how different rule types can be used to detect various log patterns in Elasticsearch.  
 It includes five YAML configuration files: `config.yaml`, `frequency.yaml`, `spike.yaml`, `flatline.yaml`, and `blacklist.yaml`.  
 Each file serves as a simple example to show how ElastAlert2 can detect log anomalies such as high error rates, sudden spikes, missing logs, and unauthorized access attempts.  
 The purpose of this repository is to help users understand and implement the basic rule types of ElastAlert2 for log monitoring and alerting.
 
-
-## Requirements
+## 2.0 Requirements
 
 | Component | Version |
 |------------|----------|
@@ -21,8 +20,65 @@ The purpose of this repository is to help users understand and implement the bas
 | Memory | 8 GB |
 | Storage | 40 GB |
 
+## 3.0 Setup
 
-## Contents
+### Reference
+For detailed documentation, refer to the official ElastAlert2 repository:  
+[https://github.com/jertel/elastalert2](https://github.com/jertel/elastalert2)
+
+
+### 3.1 Python Setup
+
+1. Install the latest version of Python.  
+   Example (for Ubuntu 22.04):
+
+   ```bash
+   c0a22173@elast:~$ sudo apt update
+   c0a22173@elast:~$ sudo apt install python3 python3-pip python3-venv -y
+   ```
+
+2. Create and activate a virtual environment:
+
+   ```bash
+   c0a22173@elast:~$ python3 -m venv elastalert-env
+   c0a22173@elast:~$ source elastalert-env/bin/activate
+   (elastalert-env) c0a22173@elast:~$
+   ```
+
+3. Verify Python and pip versions:
+
+   ```bash
+   (elastalert-env) c0a22173@elast:~$ python3 --version
+   Python 3.10.12
+   (elastalert-env) c0a22173@elast:~$ pip3 --version
+   pip 24.2 from /home/c0a22173/elastalert-env/lib/python3.10/site-packages/pip (python 3.10)
+   ```
+
+
+### 3.2 ElastAlert Setup
+
+1. Install ElastAlert2 using pip:
+
+   ```
+   (elastalert-env) c0a22173@elast:~$ pip install elastalert2
+   ```
+
+2. Example output:
+
+   ```
+   Collecting elastalert2
+     Downloading elastalert2-2.11.1-py3-none-any.whl (402 kB)
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 402.1/402.1 kB 1.5 MB/s eta 0:00:00
+   Collecting elasticsearch>=8.0.0
+     Downloading elasticsearch-8.13.4-py3-none-any.whl (385 kB)
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 385.0/385.0 kB 1.3 MB/s eta 0:00:00
+   Installing collected packages: elastalert2, elasticsearch
+   Successfully installed elastalert2-2.11.1 elasticsearch-8.13.4
+   ```
+   
+### 3.3 Configuration Setup
+
+After installation, configure the following YAML files as part of your ElastAlert setup.
 
 | File | Description |
 |------|--------------|
@@ -32,7 +88,7 @@ The purpose of this repository is to help users understand and implement the bas
 | `flatline.yaml` | Detects absence of syslog activity within a certain time period. |
 | `blacklist.yaml` | Detects authentication failures originating from blacklisted IP addresses. |
 
-## File Descriptions
+## 4.0 File Descriptions
 
 ### config.yaml
 The `config.yaml` file defines how ElastAlert connects to Elasticsearch and how often it queries for logs.  
@@ -141,14 +197,14 @@ filter:
 - The query filters logs that come from blacklisted IP addresses and include messages indicating authentication failures.  
 This rule is effective for detecting repeated login attempts or suspicious activities from known bad IPs.
 
-## Example of Execution
+## 5.0 Example of Execution
 Elastalert Execution
 <img width="940" height="303" alt="image" src="https://github.com/user-attachments/assets/d04cc4ac-c66a-4bcd-becc-c34735c5c368" />
 
 Redmine Alert Example
 <img width="1498" height="713" alt="image" src="https://github.com/user-attachments/assets/2fa8a074-bfcf-42a5-8dff-b21727cabf6b" />
 
-## Conclusion
+## 6.0 Conclusion
 This repository demonstrates how to implement different ElastAlert2 rule types for basic log monitoring and alerting.  
 Each YAML file provides a clear example of how to configure specific rule behaviors, such as frequency, spike, flatline, and blacklist detection.  
 These examples can serve as templates for developing more advanced alerting rules in larger monitoring environments.
