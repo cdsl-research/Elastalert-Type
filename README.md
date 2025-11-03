@@ -223,10 +223,26 @@ filter:
 This rule is effective for detecting repeated login attempts or suspicious activities from known bad IPs.
 
 ## 5.0 Example of Execution
-Elastalert Execution
+#### 5.1 Elastalert Execution
+Use the following codes to execute Elastalert
+```
+nohup elastalert --config config.yaml --verbose --es_debug > elastalert.log 2>&1 &
+```
+This command runs ElastAlert in the background using nohup, so it keeps running even if logged out.
+```
+tail -f elastalert.log
+```
+This command displays the content of elastalert.log in real-time, updating automatically as new logs are written.
+Used to monitor ElastAlert’s activity, rule loading, and connection status.
+```
+ps aux | grep elastalert
+```
+Lists all running processes and filters (grep) the results to show only lines containing “elastalert.”
+This is used to confirm whether the ElastAlert process is still running in the background and to view its process ID (PID).
+
 <img width="940" height="303" alt="image" src="https://github.com/user-attachments/assets/d04cc4ac-c66a-4bcd-becc-c34735c5c368" />
 
-Redmine Alert Example
+#### 5.2 Redmine Alert Example
 <img width="1498" height="713" alt="image" src="https://github.com/user-attachments/assets/2fa8a074-bfcf-42a5-8dff-b21727cabf6b" />
 
 ## 6.0 Conclusion
